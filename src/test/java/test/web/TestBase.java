@@ -22,10 +22,7 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
 
-        Configuration.browser = webConfig.browser();
-        Configuration.browserVersion = webConfig.browserVersion();
-
-        if(webConfig.urlSelenide() != null) {
+        if(webConfig.remote()) {
             String login = webConfig.loginSelenide();
             String password = webConfig.passwordSelenide();
             String url = webConfig.urlSelenide();

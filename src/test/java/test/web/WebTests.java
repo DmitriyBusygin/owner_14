@@ -10,6 +10,6 @@ public class WebTests extends TestBase {
     @Test
     public void openGitHub() {
         open("https://github.com/");
-        sleep(22000);
+        sleep(2000);
     }
 }
