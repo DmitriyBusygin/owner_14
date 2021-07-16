@@ -32,7 +32,6 @@ public class AllureAttachments {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    @Attachment(value = "Video", type = "mp4")
     public static void addVideo() {
         String url = TestBase.webConfig.selenideUrl();
         String selenoidUrl = "https://" + url;
