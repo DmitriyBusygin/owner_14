@@ -6,7 +6,6 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import test.web.TestBase;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
