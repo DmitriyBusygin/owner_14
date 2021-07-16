@@ -2,16 +2,13 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:config/localWeb.properties",
-        "classpath:config/remoteWeb.properties"
+        "classpath:config/${localOrRemote}Web.properties"
 })
 public interface WebConfig extends Config {
 
-    @Key("browser")
-    String browser();
+    @Key("browser.name")
+    String browserName();
 
     @Key("browser.version")
     String browserVersion();
@@ -19,12 +16,12 @@ public interface WebConfig extends Config {
     @Key("remote")
     Boolean remote();
 
-    @Key("urlSelenide")
-    String urlSelenide();
+    @Key("selenide.url")
+    String selenideUrl();
 
-    @Key("loginSelenide")
-    String loginSelenide();
+    @Key("selenide.login")
+    String selenideLogin();
 
-    @Key("passwordSelenide")
-    String passwordSelenide();
+    @Key("selenide.password")
+    String selenidePassword();
 }

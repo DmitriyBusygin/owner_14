@@ -2,15 +2,15 @@ package test.web;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.WebConfig;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static config.Project.webConfig;
 
 public class TestBase {
+    public static WebConfig webConfig = ConfigFactory.create(WebConfig.class);
 
     @BeforeAll
     static void setup() {
@@ -23,9 +23,9 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
 
         if(webConfig.remote()) {
-            String login = webConfig.loginSelenide();
-            String password = webConfig.passwordSelenide();
-            String url = webConfig.urlSelenide();
+            String login = webConfig.selenideLogin();
+            String password = webConfig.selenidePassword();
+            String url = webConfig.selenideUrl();
             Configuration.remote = String.format("https://%s:%s@%s/wd/hub/", login, password, url);
         }
     }
