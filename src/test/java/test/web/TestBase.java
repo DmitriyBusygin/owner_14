@@ -1,12 +1,18 @@
 package test.web;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.WebConfig;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static test.helpers.AllureAttachments.*;
 
 
 public class TestBase {
@@ -16,6 +22,8 @@ public class TestBase {
     static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.startMaximized = true;
+        Configuration.browser = webConfig.browserName();
+        Configuration.browserVersion = webConfig.browserVersion();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
@@ -30,16 +38,16 @@ public class TestBase {
         }
     }
 
-    /*@AfterEach
+    @AfterEach
     void afterEach() {
-        AllureAttachments.addScreenshotAs("Last screenshot");
-        AllureAttachments.addPageSource();
-        AllureAttachments.addBrowserConsoleLogs();
+        addScreenshotAs("Last screenshot");
+        addPageSource();
+        addBrowserConsoleLogs();
 
-        if(webConfig.urlSelenide() != null) {
-            AllureAttachments.addVideo();
+        if(webConfig.selenideUrl() != null) {
+            addVideo();
         }
 
         closeWebDriver();
-    }*/
+    }
 }

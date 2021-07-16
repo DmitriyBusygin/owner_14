@@ -17,6 +17,6 @@ public class WebTests extends TestBase {
         System.out.println("selenidePassword: " + webConfig.selenidePassword());
 
         open("https://github.com/");
-        sleep(15000);
+        sleep(5000);
     }
 }
