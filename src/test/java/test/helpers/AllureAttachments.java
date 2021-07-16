@@ -31,7 +31,7 @@ public class AllureAttachments {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    /*public static void addVideo() {
+    public static void addVideo() {
         //String url = TestBase.webConfig.selenideUrl();
         String selenoidUrl = "http://46.101.118.177:4444";
         try {
@@ -51,15 +51,6 @@ public class AllureAttachments {
             System.out.println("attachAllureVideo");
             e.printStackTrace();
         }
-    }*/
-
-    @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-    public static String addVideo() {
-        return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-                + "http://46.101.118.177:4444/video/"
-                + ((RemoteWebDriver) getWebDriver()).getSessionId().toString()
-                + ".mp4"
-                + "' type='video/mp4'></video></body></html>";
     }
 
     public static String getSessionId(){
