@@ -33,8 +33,8 @@ public class AllureAttachments {
     }
 
     public static void addVideo() {
-        String url = TestBase.webConfig.selenideUrl();
-        String selenoidUrl = "https://" + url;
+        //String url = TestBase.webConfig.selenideUrl();
+        String selenoidUrl = "http://46.101.118.177:4444";
         try {
             URL videoUrl = new URL(selenoidUrl + "/video/" + getSessionId() + ".mp4");
             InputStream is = null;
